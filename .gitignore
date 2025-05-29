@@ -1,0 +1,36 @@
+# Maven
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+**/logs/
+**/*.log
+
+# IntelliJ IDEA
+*.iml
+.idea/
+*.ipr
+*.iws
+out/
+
+# VSCode
+.vscode/
+deps.txt
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# 환경 파일
+.env*
+
+# Docker 관련
+pgdata/
+*.jar
+
+# CSV 데이터
+*.csv
+
+# 배치 파일
+*.bat
+
+# 문서
+docs/
