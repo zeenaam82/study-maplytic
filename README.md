@@ -2,8 +2,6 @@
 
 > Spring Boot + PostGIS 기반의 버스 정류장 공간 분석 API 프로젝트
 
----
-
 ## 기술 스택
 
 - **백엔드**: Java 17, Spring Boot, JPA, Maven  
@@ -31,6 +29,16 @@
 - 중심점 계산 (`/center-point`)
 - 반경 내 정류장 밀도 (`/density`)
 - 정류장 간 거리 계산 (`/distance`)
+
+---
+
+## 데이터셋
+
+> 서울시 버스정류소 위치정보
+
+https://data.seoul.go.kr/dataList/OA-15067/S/1/datasetView.do
+
+XLSX 파일 다운로드 후 CVS(UTF-8)변환 필수
 
 ---
 

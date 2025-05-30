@@ -21,21 +21,27 @@ jobs:
       - name: Build with Maven
         run: mvn clean package -DskipTests
 
-      - name: Copy jar to EC2
+      - name: Copy docker-compose files to EC2
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
-          source: "backend/target/*.jar"
+          source: |
+            Dockerfile
+            docker-compose.yml
+            backend/target/*.jar
           target: "~/app"
 
-      - name: Run app on EC2
+      - name: Deploy with Docker Compose on EC2
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            pkill -f 'java -jar' || true
-            nohup java -jar ~/app/*.jar > ~/app/nohup.out 2>&1 &
+            cd ~/app
+            docker-compose down
+            docker-compose build
+            docker-compose up -d
+
